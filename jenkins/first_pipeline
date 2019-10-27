@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo "=============docker pushing image"
                 sh '''
-                docker push vlasovatamara@bk.ru
+                docker push 14881589/toolbox:latest
                 '''
             }
         }
