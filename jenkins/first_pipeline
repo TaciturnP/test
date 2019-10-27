@@ -13,12 +13,29 @@ pipeline {
         timestamps()
     }
     stages {
+        stage ("docker login"){
+            steps {
+            echo "========= docker login================="
+            withCredentiasl([usernamePassword(credentialsID: 'dockerhub_14881589', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
+                sh """
+                docker login -u $USERNAME -p $PASSWORD
+                """
+                }
+               }
+        }
         stage("create docker image") {
             steps {
                 echo "==========start buikding image==============="
                 dir ('docker'){
-                  sh 'docker build -t toolbox:latest . '
+                  sh 'docker build -t 14881589/toolbox:latest . '
                 }
+            }
+        }
+        stage ("docker push"){
+            steps {
+                echo "=============docker pushing image"
+                sh '''
+                docker push vlasovatamara@bk.ru
             }
         }
     }
