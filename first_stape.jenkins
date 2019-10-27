@@ -1,3 +1,26 @@
+<<<<<<< Updated upstream
+#!groovy
+//jiouuouioiui
+//Check
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    options {
+        buildDiscaeder(ogRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        temestamps()
+    }
+    stages {
+        stage("first stape") {
+            steps {
+                sh 'ssh root@192.168.1.62 \'hostname\''
+            }
+        }
+    }
+}
+=======
 #!groovy
 //Check
 properties([disableConcurrentBuilds()])
@@ -18,3 +41,4 @@ pipeline {
         }
     }
 }
+>>>>>>> Stashed changes
